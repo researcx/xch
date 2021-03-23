@@ -1,0 +1,17 @@
+flask
+flask-mysqldb
+flask-caching
+flask-ldapconn
+Flask_SQLAlchemy
+flask_hcaptcha
+redis
+requests
+anonymizeip
+humanize
+bbcode
+Pillow
+piexif
+passlib
+stopforumspam_api
+flask-paginate
+htmlmin
