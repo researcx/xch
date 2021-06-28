@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>{{ compose_title(page_title)|safe }}</title>
+
+		<meta charset="utf-8" />
+		<link rel="shortcut icon" href="{{ static_url('favicon.ico') }}">
+		<link rel="stylesheet" type="text/css" href="{{ static_url('css/reset.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ static_url('css/index_4ch.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ static_url('css/base.css') }}">
+	</head>
+
+	<body>
+		<div id="doc">
+			<div id="hd">
+				<div id="logo-fp">
+					<a href="{{ config()['site']['url'] }}" title="Home"><img alt="{{ config()['site']['title']|safe }}"
+							src="{{ static_url('image/fp/logo-transparent.png') }}" width="300" height="120"></a>
+				</div>
+			</div>
+			<div id="bd">
+				<div class="box-outer" id="announce">
+					<div class="box-inner">
+						<div class="boxbar">
+							<h2>What is {{ config()['site']['title']|safe }}?</h2>
+							<a data-cmd="x-wot" href="#" class="closebutton"></a>
+						</div>
+						<div class="boxcontent">
+							<div id="wot-cnt">
+								{{ config()['site']['description']|safe }}
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="box-outer top-box" id="boards">
+					<div class="box-inner">
+						<div class="boxbar">
+							<h2>Boards</h2>
+							<div id="create-btn"><a href="{{ config()['site']['url'] }}create" data-cmd="create">create</a></div>
+							<div id="filter-btn" data-cmd="filter" onclick="alert('NOTIMPLEMENTED')">filter ▼</div>
+						</div>
+						<div class="boxcontent">
+							<div class="column">
+								{{render_board_index()|safe}}
+							</div>
+							<br class="clear-bug" />
+						</div>
+					</div>
+				</div>
+				<div class="box-outer top-box" id="popular-threads">
+					<div class="box-inner">
+						<div class="boxbar">
+							<h2>Popular Threads</h2>
+							<div id="opts-btn" data-cmd="opts" onclick="alert('NOTIMPLEMENTED')">options ▼</div>
+						</div>
+						<div class="boxcontent">
+							<div id="c-threads">
+								{{render_popular_index(nsfw=0)|safe}}
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="box-outer top-box" id="site-stats">
+					<div class="box-inner">
+						<div class="boxbar">
+							<h2>Stats</h2>
+						</div>
+						<div class="boxcontent">
+							<div class="stat-cell"><b>Total Posts:</b> {{stats()['post_count']}}</div>
+							<div class="stat-cell"><b>Current Users:</b> {{stats()['user_count']}}</div>
+							<div class="stat-cell"><b>Active Content:</b> {{human_size(stats()['disk_used'])}}</div>
+						</div>
+					</div>
+				</div>
+				<div class="yui-g">
+					<div class="yui-u first">
+					</div>
+					<div class="yui-u">
+					</div>
+				</div>
+			</div>
+			<div id="ft">
+				<ul>
+					<li class="fill" />
+					{% for url in config()['site']['footer_index_tabs'] %}
+						{{ url|safe }}
+					{% endfor %}
+				</ul>
+				<br class="clear-bug" />
+				<div id="copyright">
+						{{config()['site']['footer_index_links']|safe}}
+						<br /><br /><br />
+						{{config()['site']['footer_index']|safe}}
+				</div>
+			</div>
+		</div>
+		<div id="modal-bg"></div>
+	</body>
+</html>

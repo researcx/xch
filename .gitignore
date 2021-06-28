@@ -1,6 +1,5 @@
-xch/static/t/*
-xch/static/f/*
 logs/*
+xch/uploads/*
 __pycache__/
 *.py[cod]
 *$py.class

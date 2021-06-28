@@ -1,0 +1,47 @@
+body {
+    background: #ffe url(../image/fp/fade.png) top repeat-x;
+    color: #800;
+}
+.boxbar {
+    background: #fca;
+    color: #800;
+}
+#announce {
+    background: #fff;
+    color: #000;
+}
+#announce .boxbar {
+    background: #800;
+    color: #fff;
+}
+#disclaimer-dialog .container-close, .closebutton{
+    background: #800 url(../image/fp/icon-close-red.png);
+}
+.top-box {
+    background: #fff;
+}
+#boards a {
+    color: #800;
+}
+.c-thread img {
+    border: 1px solid #800;
+}
+#ft li.current, #ft li.fill {
+    background: #ffe;
+    color: #800;
+}
+#ft li {
+    background: #fed;
+}
+#ft li a {
+    color: #800;
+}
+#ft li a:hover {
+    color: #c63;
+}
+a:visited {
+    color: blue;
+}
+.warning {
+    color: #e00;
+}

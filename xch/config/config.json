@@ -1,0 +1,62 @@
+{
+    "server":{
+            "secret":"NOKEY",
+            "tripseed": "NOSEED",
+            "database": "sqlite:///database/xch_demo.db",
+            "anonymize_ip": true
+    },
+    "site":{
+            "title": "xch",
+            "host": "127.0.0.1",
+            "path": "/",
+            "url": "https://xch.fairuse.org/",
+            "static_url": "https://xch.fairuse.org",
+            "static_folder": "/_rsc/",
+            "supported_media": [".jpg", ".jpeg", ".gif", ".png", ".webp", ".webm", ".mp4"],
+            "banned_urls": ["_rsc", "info", "rules", "terms", "mod", "admin"],
+            "single_board": "/r/",
+            "show_post_counts": true,
+            "show_public_bans": true,
+            "category_title_maxlength": 50,
+            "category_url_maxlength": 50,
+            "category_desc_maxlength": 255,
+            "board_title_maxlength": 50,
+            "board_url_maxlength": 50,
+            "board_desc_maxlength": 255,
+            "board_replies_to_show": 5,
+            "board_nav_top_left": ["<a data-cmd=\"custom-menu-edit\" title=\"Edit Menu\" onclick=\"alert('NOTIMPLEMENTED')\" href=\"#\">Edit</a>"],
+            "board_nav_top_right": ["<a href=\"https://xch.fairuse.org/settings\" title=\"settings\">Settings</a>", "<a href=\"https://xch.fairuse.org/search\" title=\"Search\">Search</a>", "<a href=\"https://xch.fairuse.org/\" title=\"Home\">Home</a>"],
+            "post_disclaimer": "Disclaimer: this post and the subject matter and contents thereof - text, media, or otherwise - do not necessarily reflect the views of the xch administration.",
+            "post_disclaimer_enabled": true,
+            "donate_info": "",
+            "description": "<p>xch is a simple image-based bulletin board where anyone can post comments and share images. There are boards dedicated to a variety of topics, from Western animation and culture to videogames, music, and pornography. Users do not need to register an account before participating in the community. Feel free to click on a board below that interests you and jump right in!</p><br/><p>Be sure to familiarize yourself with the <a href=\"https://xch.fairuse.org/index/rules\">Rules</a> before posting, and read the <a href=\"https://xch.fairuse.org/index/faq\" title=\"Frequently Asked Questions\">FAQ</a> if you wish to learn more about how to use the site.</p>",
+            "announcement":"<h3>Debug Mode</h3><p><small><strong>XMR: 89forYvGk3AhDz8H58YuFU8C4xYwXfW3WXHSvkijcSnfXswangdJs5CLJuSZi7YdDNGp4vT9ts8Z8JGoP7AEKQwUSZHR93u</strong></small></p><p><small><strong>BTC: bc1qykkggg6l7uqtg0l5mffzzys8f3sc5dj095jr0h</strong></small></p>",
+            "banners": ["<div id=\"bannerCnt\" class=\"title desktop\"><a href=\"https://xch.fairuse.org/\"><img src=\"https://i.imgur.com/zy1mJ91.gif\" class=\"banner\"/></a></div>"],
+            "footers": ["All trademarks and copyrights on this page are owned by their respective parties. Images uploaded are the responsibility of the Poster. Comments are owned by the Poster."],
+            "footer_index": "Copyright &copy; 2002-2021 xch community support LLC. All rights reserved.",
+            "footer_index_tabs": ["<li class=\"first\"><a href=\"https://xch.fairuse.org/\">Home</a></li>", "<li><a href=\"https://xch.fairuse.org/blotter\">News</a></li>", "<li><a href=\"https://xch.fairuse.org/blog\">Blog</a></li>", "<li><a href=\"https://xch.fairuse.org/index/faq\">FAQ</a></li>", "<li><a href=\"https://xch.fairuse.org/index/rules\">Rules</a></li>", "<li><a href=\"https://xch.fairuse.org/index/support\">Support</a></li>"],
+            "footer_index_links": "<a href=\"https://xch.fairuse.org/index/faq\">About</a> &bull; <a href=\"https://xch.fairuse.org/index/feedback\">Feedback</a> &bull; <a href=\"https://xch.fairuse.org/index/legal\">Legal</a> &bull; <a href=\"https://xch.fairuse.org/index/contact\">Contact</a>",
+            "contact_info": "contact@example.org",
+            "year_founded": "2002"
+    },
+    "branding":{
+            "name": "xch",
+            "repo": "<a href='#'>xch</a>",
+            "contributors": ["identiboorustaff@yandex.com"],
+            "version": "N/A"
+    },
+    "hcaptcha":{
+            "enabled": false,
+            "key": "525abf4f-ab4e-44d9-8771-b93c01403bbe",
+            "secret": "0x0d6c1daC8de8D45332Ec51826F259E08AdAFdeEE"
+    },
+    "cache":{
+            "type": "simple"
+    },
+    "redis":{
+            "host": "localhost",
+            "port": 6379,
+            "url": "redis://localhost:6379",
+            "prefix": "fcache"
+    }
+}

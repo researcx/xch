@@ -1,36 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<title>{{ composed_title()|safe }} &bull; {{config()['site']['title']</title>
-
-		<meta charset="utf-8" />
-		<link rel="shortcut icon" href="favicon.ico" />
-		<style>
-			.title{
-
-			}
-			.container{
-				text-align: center;
-				display: block;
-				width: 400px;
-				margin: 0 auto;
-			}
-			#file{
-				max-width: 250px;
-			}
-		</style>
-	</head>
-
-	<body>
-		{% with messages = get_flashed_messages() %}
-			{% if messages %}
-				<ul class=flashes>
-				{% for message in messages %}
-				<li>{{ message|safe }}</li>
-				{% endfor %}
-				</ul>
-			{% endif %}
-		{% endwith %}
-		{% block body %}{% endblock %}
-	</body>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="robots" content="noarchive">
+        <meta name="description"
+            content="{{ config()['site']['url'] }}{{ board['url'] }}/ - {{ board['title'] }}{% if board['description'] %} &quot;{{ board['description'] }}&quot;{% endif %}">
+        <meta name="keywords" content="{{ board['keywords'] }}">
+        <meta name="referrer" content="origin">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link rel="shortcut icon" href="{{ static_url('favicon.ico') }}">
+		<link rel="stylesheet" type="text/css" href="{{ static_url('css/reset.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ static_url('css/board.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ static_url('css/mobile.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ static_url('css/base.css') }}">
+        <link rel="canonical" href="{{ config()['site']['url'] }}{{ board['url'] }}/">
+        <link rel="alternate" title="RSS feed" href="{{ config()['site']['url'] }}{{ board['url'] }}/index.rss" type="application/rss+xml">
+        <title>{{ compose_title(page_title)|safe }}</title>
+        <script type="text/javascript">
+            var comlen = {{ board['comlen'] }};
+            var maxLines = {{ board['maxLines'] }};
+            var clickable_ids = {{ board['clickable_ids'] }};
+            var cooldowns = {
+                "thread": {{ board['thread_cooldown'] }},
+                "reply": {{ board['reply_cooldown'] }},
+                "image": {{ board['upload_cooldown'] }}
+            };
+            var maxFilesize = {{ board['maxFilesize'] }};
+            var maxWebmFilesize = {{ board['maxWebmFilesize'] }};
+            var maxMiscFilesize = {{ board['maxMiscFilesize'] }};
+            var board_archived = {{ board['archived'] }};
+            var check_for_block = {{ board['check_for_block'] }};
+        </script>
+            <style type="text/css">
+                #postForm {
+                    display: table !important;
+                }
+                #g-hcaptcha {
+                    display: none;
+                }
+            </style>
+        </noscript>
+    </head>
+    <body class="is_index board_wg"><span id="id_css"></span>
+    <div id="boardNavDesktop" class="desktop">
+        <span class="boardList">
+            {{ render_board_list()|safe }}
+            <span class="custom-menu-ctrl">
+            {% for item in config()['site']['board_nav_top_left'] %}
+            [{{item|safe}}]
+            {% endfor %}
+            </span>
+        </span>
+        <span id="navtopright">
+            {% if board['public_bans'] %}
+            [<a href="{{ config()['site']['url'] }}{{ board['url'] }}/bans" title="Ban List">Ban List</a>]
+            {% endif %}
+            {% for item in config()['site']['board_nav_top_right'] %}
+            [{{item|safe}}]
+            {% endfor %}
+        </span>
+    </div>
+    <div id="boardNavMobile" class="mobile">
+        <div class="boardSelect"> <strong>Board</strong> <select id="boardSelectMobile"></select> </div>
+        <div class="pageJump"> <a href="#bottom">&#9660;</a> <a href="javascript:void(0);"
+                id="settingsWindowLinkMobile">Settings</a> <a href="{{ config()['site']['mobile_url']}}">Mobile</a> <a href="{{ config()['site']['url'] }}"
+                target="_top">Home</a> </div>
+    </div>
+    <div class="boardBanner">
+        {{render_banner()|safe}}
+        <div class="boardTitle">/{{ board['url'] }}/ - {{ board['title'] }}</div>
+        {% if board['description'] %}
+        <div class="boardDescription">{{ board['description'] }}</div>
+        {% endif %}
+    </div>
+    {% block body %}{% endblock %}
+    <div id="absbot" class="absBotText">
+        <div class="mobile"><span id="disable-mobile">[<a href="javascript:disableMobile();">Disable Mobile View / Use
+                    Desktop Site</a>]<br/><br/></span><span id="enable-mobile">[<a
+                    href="javascript:enableMobile();">Enable Mobile View / Use Mobile Site</a>]<br/><br/></span></div>
+        <span class="absBotDisclaimer">{{ render_footer()|safe }}</span>
+        <div id="footer-links">{{config()['site']['footer_index_links']|safe}}</div>
+    </div>
+    <div id="bottom"></div>
+</body>
 </html>

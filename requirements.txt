@@ -1,7 +1,5 @@
 flask
-flask-mysqldb
 flask-caching
-flask-ldapconn
 Flask_SQLAlchemy
 flask_hcaptcha
 redis
@@ -15,3 +13,9 @@ passlib
 stopforumspam_api
 flask-paginate
 htmlmin
+python-slugify
+markdown2
+psutil
+bs4
+maxminddb-geolite2
+six

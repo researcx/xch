@@ -1,0 +1,16 @@
+export FLASK_APP=xch
+export FLASK_DEBUG=true
+export FLASK_ENV=development
+
+export DEMO_HOST="0.0.0.0"
+export DEMO_PORT=5000
+
+export FLASK_HOST="0.0.0.0"
+export FLASK_PORT=5500
+
+export UWSGI_HOST="0.0.0.0"
+export UWSGI_PORT=6000
+
+export UWSGI_WORKERS=4
+export UWSGI_PROCESSES=4
+export UWSGI_THREADS=4

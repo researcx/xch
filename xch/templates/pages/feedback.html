@@ -1,0 +1,45 @@
+{% extends "pages/template.html" %}
+{% block body %}
+<div class="box-outer" id="announce">
+	<div class="box-inner">
+		<div class="boxbar">
+			<h2></h2>
+			<a data-cmd="x-wot" href="#" class="closebutton"></a>
+		</div>
+		<div class="boxcontent">
+			<div id="wot-cnt">
+				<div id="form">
+					<h2>Submit Feedback</h2>
+					<form method="post" enctype="multipart/form-data">
+						<div class="form-col">
+							<label for="form-cat">Category:</label>
+							<select name="category" id="form-cat">
+								<option value="0">Moderation Feedback</option>
+								<option value="1">Bug Report</option>
+								<option value="2">Feature Suggestion</option>
+								<option value="3">Spam Filter Issue</option>
+								<option value="4">IP Range Ban Issue</option>
+								<option value="5">Board Suggestion</option>
+							</select>
+						</div>
+						<label for="form-subject">Subject:</label>
+						<input maxlength="150" type="text" name="subject" id="form-subject" required="">
+						<label for="form-message">Message:</label>
+						<textarea maxlength="5000" name="message" rows="8" cols="40" id="form-message" required=""></textarea>
+						{% if config()['hcaptcha']['enabled'] %}
+						<div id="captcha-cnt"><label>Verification:</label>
+							<div class="site-captcha">
+								{{ hcaptcha }}
+								<noscript><span class="captcha-notice">JavaScript is required for <a href="https://www.hcaptcha.com/privacy" target="_blank">hCaptcha</a></span></noscript>
+							</div>
+						</div>
+						{% endif %}
+						<button type="submit" id="form-submit">Submit</button>
+						<input type="hidden" name="action" value="submit">
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

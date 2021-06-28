@@ -1,0 +1,259 @@
+@media only screen and (max-width:640px) {
+    .bsa-cnt {
+        height: 250px;
+        display: flex;
+        justify-content: center;
+        align-items: center
+    }
+}
+
+@media only screen and (max-width:480px) {
+    .adc-resp {
+        width: 300px;
+        height: 300px
+    }
+
+    .adc-resp-bg {
+        width: 300px;
+        height: 250px
+    }
+}
+
+
+@media only screen and (max-width:700px) {
+    .jla-it {
+        width: 340px;
+        height: 220px;
+        margin: auto
+    }
+
+    .jla-it img {
+        width: 340px;
+        height: 200px
+    }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    tbody textarea {
+        margin-bottom: -3px !important;
+        width: 292px
+    }
+}
+
+.button {
+    background-color: #c4c4c4 !important;
+    border: 1px solid #b7b7b7 !important;
+	background-image: none !important;
+	color: #2d2d2d !important;
+}
+
+.button a, a.button:hover, .button a:visited{
+    color: #2d2d2d !important;
+}
+
+.redButton {
+    background-color: #262626 !important;
+    background-image: none !important;
+    border: 1px solid #313131 !important;
+    color: #e8e8e8 !important;
+}
+
+div.post div.postInfoM {
+    border: 1px solid #bfbfbf;
+    background: rgb(255, 255, 255) url("../image/x/dither2.png");
+    color: rgb(41, 41, 41);
+}
+
+div.opContainer {
+    border: 1px solid #bfbfbf;
+    background: rgb(255, 255, 255) url("../image/x/dither2.png");
+}
+
+div.postLink {
+    background: rgb(255, 255, 255) url("../image/x/dither2.png");
+    border-top: 1px solid #bfbfbf;
+
+}
+
+div.postLink span.info{
+    color: rgb(41, 41, 41);
+}
+
+div.postLink a{
+    color: #fff !important;
+}
+
+div.postLink .button{
+    background: rgb(128, 128, 128) url("../image/x/dither1.png") !important;
+}
+
+.reply:target, .reply:focus, .reply.highlight {
+    background: #ececec !important;
+    border: 1px solid #e3e3e3 !important;
+}
+
+body {
+    font: 13px/1.231 consolas,monospace,sans-serif;
+    background: rgb(214, 214, 214);
+    color: rgb(41, 41, 41);
+}
+#announce {
+    background: #fff;
+    color: #000;
+}
+#announce .boxbar {
+    background: rgb(128, 128, 128) url("../image/x/dither1.png");
+    color: #fff;
+}
+.boxbar {
+    background: rgb(255, 255, 255) url("../image/x/dither2.png");
+    color: rgb(41, 41, 41);
+}
+.box-outer {
+    border: 2px solid;
+}
+#ft ul {
+    border-top: 2px solid;
+}
+#ft li.first {
+    border-left: 2px solid;
+}
+#ft li {
+    border: 2px solid;
+    margin-left: -1px;
+    margin-right: -1px;
+    margin-top: -2px;
+}
+#ft li.fill {
+    border-top: 2px solid;
+}
+#disclaimer-dialog .container-close, .closebutton{
+    background: rgb(41, 41, 41) url("../image/x/icon-close-red.png");
+}
+.top-box {
+    background: #fff;
+}
+#boards a {
+    color: rgb(41, 41, 41);
+}
+.c-thread img {
+    border: 2px solid rgb(41, 41, 41);
+}
+#ft li.current, #ft li.fill {
+    background: rgb(214, 214, 214);
+    color: rgb(41, 41, 41);
+}
+#ft li {
+    background: rgb(228, 228, 228);
+}
+#ft li a {
+    color: rgb(41, 41, 41);
+}
+#ft li a:hover {
+    color: rgb(119, 119, 119);
+}
+a, a:visited {
+    color: #00e;
+}
+.warning {
+    color: #e00;
+}
+div#boardNavDesktop {
+    color: #b86;
+}
+.persistentNav, div#boardNavMobile {
+    background-color: #cecece;
+    border-bottom: 2px solid #cacaca;
+}
+.quoteLink, .quotelink, .deadlink, .pageJump a {
+    color: navy !important;
+}
+#bannerCnt {
+    border: 1px solid #800;
+}
+hr {
+    border-top: 1px solid #cfcfcf;
+}
+table.postForm > tbody > tr > td:first-child {
+    color: #fff;
+    border: 2px solid #000;
+    background: rgb(128, 128, 128) url("../image/x/dither1.png");
+}
+input[type="text"], input[type="password"], table.postForm > tbody textarea, #hcaptcha_response_field {
+    border: 1px solid #aaa;
+}
+.globalMessage {
+    color: red;
+    word-wrap: break-word;
+}
+.mFileInfo {
+    color: #707070 !important;
+}
+div.post div.postInfo span.subject {
+    color: #cc1105;
+}
+div.post div.postInfo span.nameBlock span.name {
+    color: #117743;
+}
+div.post div.postInfo span.postNum a {
+    color: #444;
+}
+a.replylink:not(:hover), div#absbot a:not(:hover) {
+    color: #00e !important;
+}
+.yotsuba_new .postMenuBtn, .futaba_new .postMenuBtn {
+    color: #000080;
+}
+span.summary {
+    color: #707070;
+}
+div.sideArrows {
+    color: #e0bfb7;
+}
+div.reply {
+    background-color: #f0e0d6;
+    border: 1px solid #bfbfbf;
+    background: rgb(255, 255, 255) url("../image/x/dither2.png");
+    color: rgb(41, 41, 41);
+}
+div.pagelist {
+    background: #e6e6e6;
+    border-right: 1px solid #cfcfcf;
+    border-bottom: 1px solid #cfcfcf;
+    color: rgb(148, 148, 148);
+}
+div.pagelist strong {
+    color: rgb(78, 78, 78);
+}
+div.pagelist div.cataloglink {
+    border-left: 1px solid #cfcfcf;
+}
+div#boardNavDesktopFoot {
+    color: rgb(167, 167, 167);
+}
+div#boardNavDesktopFoot a {
+    color: rgb(122, 122, 122);
+}
+div#absbot {
+    color: rgb(85, 85, 85);
+}
+div.closed {
+    color: red;
+}
+#form {
+    background-color: #fff;
+    color: #000;
+}
+blockquote > span.quote {
+    color: #789922;
+}
+.box {
+    background: rgb(196, 196, 196) url("../image/x/dither2.png");
+    border: 1px solid #000333;
+    color: #000333;
+    margin: 0 0 12px 0;
+}
+.box-title {
+    background: #d3d3d3 url("../image/x/dither1.png");
+    color: #000333;
+}

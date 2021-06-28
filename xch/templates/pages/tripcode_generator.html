@@ -1,0 +1,23 @@
+{% extends "pages/template.html" %}
+{% block body %}
+<div class="box-outer" id="announce">
+	<div class="box-inner">
+		<div class="boxbar">
+			<h2></h2>
+			<a data-cmd="x-wot" href="#" class="closebutton"></a>
+		</div>
+		<div class="boxcontent">
+			<div id="wot-cnt">
+				<div id="form">
+					<h2>Tripcode Generator</h2>
+                    (include poster name and tripcode as when posting)
+                    <form method="post" action="/_fn/generate_tripcode">
+                        <input type="text" name="password" value="">
+                        <input type="submit" value="Submit">
+                    </form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

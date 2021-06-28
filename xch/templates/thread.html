@@ -1,0 +1,140 @@
+{% extends "_layout.html" %}
+{% block body %}
+    <hr class="abovePostForm">
+    <div style='position:relative'></div>
+    <div class="navLinks mobile"><span class="mobileib button"><a href="{{ config()['site']['url'] }}{{ board['url'] }}/" accesskey="a">Return</a></span> <span
+            class="mobileib button"><a href="{{ config()['site']['url'] }}{{ board['url'] }}/catalog">Catalog</a></span> <span class="mobileib button"><a
+                href="#bottom">Bottom</a></span> <span class="mobileib button"><a href="#top_r"
+                id="refresh_top">Refresh</a></span></div>
+    <hr class="mobile">
+    {% if thread['is_closed'] %}
+    <div class="closed">Thread closed.<br/>You may not reply at this time.</div>
+    {% else %}
+    <form name="post" action="{{ config()['site']['url'] }}{{ board['url'] }}/_fn/create_post" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="MAX_FILE_SIZE" value="{{ board['maxFilesize'] }}">
+        <input type="hidden" name="mode" value="regist">
+        <input id="postPassword" name="pwd" type="hidden">
+        <input type="hidden" name="thread" value="{{thread['id']}}">
+    <div id="togglePostFormLink" class="desktop">[<a href="#">Post a Reply</a>]</div>
+    <table class="postForm hideMobile" id="postForm">
+        <tbody>
+            <tr data-type="Name">
+                <td>Name</td>
+                <td><input name="name" type="text" tabindex="1" placeholder="Anonymous"></td>
+            </tr>
+            <tr data-type="Options">
+                <td>Options</td>
+                <td><input name="email" type="text" tabindex="2"></td>
+            </tr>
+            <tr data-type="Subject">
+                <td>Subject</td>
+                <td><input name="sub" type="text" tabindex="3"><input type="submit" value="Post" tabindex="6"></td>
+            </tr>
+            <tr data-type="Comment">
+                <td>Comment</td>
+                <td><textarea name="com" cols="48" rows="4" wrap="soft" tabindex="4"></textarea></td>
+            </tr>
+            {% if board['captcha'] and config()['hcaptcha']['enabled']%}
+            <tr id="captchaFormPart">
+                <td class="desktop">Verification</td>
+                <td>
+                    <div class="site-captcha">
+                        {{ hcaptcha }}
+                        <noscript><span class="captcha-notice"><a href="https://www.hcaptcha.com/privacy" target="_blank">hCaptcha</a></span></noscript>
+                    </div>
+                </td>
+                </td>
+            </tr>
+            {% endif %}
+            <tr data-type="File">
+                <td>File</td>
+                <td><input id="postFile" name="upfile" type="file" tabindex="7">
+            </tr>
+            <tr class="rules">
+                <td colspan="2">
+                    <ul class="rules">
+                        <li>Please read the <a href="{{ config()['site']['url'] }}index/rules">Rules</a> and <a
+                            href="{{ config()['site']['url'] }}index/faq">FAQ</a> before posting.</li>
+                        <li>
+                            Maximum file size is {{human_size(board['maxFilesize'])}}.
+                            {% if board['maxFilesize'] != board['maxWebmFilesize'] %}
+                            ({{human_size(board['maxWebmFilesize'])}} per WebM) 
+                            {% endif %}
+                            {% if board['maxFilesize'] != board['maxMiscFilesize'] %}
+                            ({{human_size(board['maxMiscFilesize'])}} per Misc.)
+                            {% endif %}
+                        </li>
+                        {% if board['supported_media'] %}
+                        <li>Allowed file types: {{board['supported_media'].strip("[]")}}.</li>
+                        {% endif %}
+                        {% if board['maxImageDimensions'] %}
+                        <li>Images smaller than {{board['maxImageDimensions']}} pixels are not allowed.</li>
+                        {% endif %}
+                        <li>There are <strong>POSTERS_NOTIMPLEMENTED</strong> posters in this thread.</li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">
+                    <div id="postFormError"></div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    <!-- <table id="blotter" class="desktop">
+        <tbody id="blotter-msgs">
+            {{ render_blotter_list(3)|safe }}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">[<a data-utc="1598018313" id="toggleBlotter" href="#">Hide</a>]<span> [<a
+                            href="{{ config()['site']['url'] }}blotter" target="_blank">Show All</a>]</span></td>
+            </tr>
+        </tfoot>
+    </table> -->
+    </form>
+    {% endif %}
+    <hr>
+    <!-- <a href="#" class="button redButton mobile hidden" id="globalToggle">View Announcement</a> -->
+    <div class="globalMessage" id="globalMessage">
+        {{ config()['site']['announcement']|safe }}
+    </div>
+    <hr class="desktop" id="op">
+    <div class="navLinks desktop">[<a href="{{ config()['site']['url'] }}{{ board['url'] }}/" accesskey="a">Return</a>] [<a href="{{ config()['site']['url'] }}{{ board['url'] }}/catalog">Catalog</a>] [<a
+            href="#bottom">Bottom</a>]</div>
+    <hr>
+    <form name="delform" id="delform" action="{{ config()['site']['url'] }}{{ board['url'] }}/_fn/delete_post" method="get">
+        <div class="board">
+            {{ render_thread_list(thread_specific=thread['id'], thread_count=1, reply_count=512, board=board['url'])|safe }}
+            <hr>
+            <div class="navLinks navLinksBot desktop">
+            [<a href="{{ config()['site']['url'] }}{{ board['url'] }}" accesskey="a">Return</a>] [<a
+                    href="{{ config()['site']['url'] }}{{ board['url'] }}/catalog">Catalog</a>] [<a href="#top">Top</a>] <div class="thread-stats">{{ render_thread_stats(thread['id'])|safe }}</div> [<a href="" data-cmd="update">Update</a>]
+                [<label><input type="checkbox" title="Fetch new replies automatically" data-cmd="auto">Auto</label>]
+                <span></span>
+            </div>
+            <hr class="desktop">
+            <div class="mobile center"><a class="mobilePostFormToggle button" href="#">Post a Reply</a></div>
+        </div>
+        <div class="navLinks mobile"><span class="mobileib button"><a href="{{ config()['site']['url'] }}{{ board['url'] }}/" accesskey="a">Return</a></span> <span
+                class="mobileib button"><a href="{{ config()['site']['url'] }}{{ board['url'] }}/catalog">Catalog</a></span> <span class="mobileib button"><a
+                    href="#top">Top</a></span> <span class="mobileib button"><a href="#bottom_r"
+                    id="refresh_bottom">Refresh</a></span></div>
+        <hr class="mobile">
+        <div class="adc-resp-bg" data-ad-bg="176,1,5187,5f5ef92eec034,176,2,5188,5f5ef93fac7ed"></div>
+        <div class="bottomCtrl desktop"><span class="deleteform"><input type="hidden" name="mode" value="usrdel">Delete
+                Post:<input type="hidden" name="res" value="6872254"> [<input type="checkbox" name="onlyimgdel"
+                    value="on">File Only]<input type="text" id="delPassword" placeholder="Password" name="pwd"> <input type="submit"
+                    value="Delete"><input id="bottomReportBtn" type="button" value="Report"></span><span
+                class="stylechanger">Style: <select id="styleSelector">
+                    <option value="Yotsuba New">Yotsuba</option>
+                    <option value="Yotsuba B New">Yotsuba B</option>
+                    <option value="Futaba New">Futaba</option>
+                    <option value="Burichan New">Burichan</option>
+                    <option value="Tomorrow">Tomorrow</option>
+                    <option value="Photon">Photon</option>
+                </select> </span></div>
+    </form>
+{% endblock %}
