@@ -5,6 +5,7 @@ from xch.models.inject.render_human_time import render_human_time
 from xch.models.inject.render_file_info import get_file_info, get_file_name
 from xch.models.inject.parse_message import parse_message
 from xch.models.inject.slug import get_slug
+from xch.models.inject.config import get_site_url
 
 #@xch.cache.memoize(timeout=86400) # render_thread_stats
 def render_thread_stats(thread):
@@ -62,16 +63,16 @@ def render_thread_list(thread_specific=0, thread_count=15, reply_count=4, page=1
                                     <div id="p'''+str(thread.id)+'''" class="post op">
                                         <div class="postInfoM mobile" id="pim'''+str(thread.id)+'''"> <span class="nameBlock"><span class="name">'''+thread.title+'''</span> '''+is_sticky+''' '''+is_closed+'''<br/><span class="subject"><span data-tip=""
                                                         data-tip-cb="mShowFull">'''+thread.content+'''</span></span> </span><span class="dateTime postNum"
-                                                data-utc="'''+str(thread.time)+'''">'''+render_human_time(thread.time)+''' <a href="'''+xch.config['site']['url']+board.url+'''/thread/'''+str(thread.id)+'''#p'''+str(thread.id)+'''"
-                                                    title="Link to this post">No.</a><a href="'''+xch.config['site']['url']+board.url+'''/thread/'''+str(thread.id)+'''#q'''+str(thread.id)+'''"
+                                                data-utc="'''+str(thread.time)+'''">'''+render_human_time(thread.time)+''' <a href="'''+get_site_url()+board.url+'''/thread/'''+str(thread.id)+'''#p'''+str(thread.id)+'''"
+                                                    title="Link to this post">No.</a><a href="'''+get_site_url()+board.url+'''/thread/'''+str(thread.id)+'''#q'''+str(thread.id)+'''"
                                                     title="Reply to this post">'''+str(thread.id)+'''</a></span></div>'''
                 if 'file_size_human' in get_file_info(get_file_name(thread.time, thread.file)):
                     render += '''
                                         <div class="file" id="f'''+str(thread.id)+'''">
-                                            <div class="fileText" id="fT'''+str(thread.id)+'''">File: <a href="'''+xch.config['site']['url']+board.url+'''/'''+get_file_name(thread.time, thread.file)+'''"
+                                            <div class="fileText" id="fT'''+str(thread.id)+'''">File: <a href="'''+get_site_url()+board.url+'''/'''+get_file_name(thread.time, thread.file)+'''"
                                                     target="_blank">'''+thread.file+'''</a> ('''+get_file_info(get_file_name(thread.time, thread.file))['file_size_human']+''', '''+get_file_info(get_file_name(thread.time, thread.file))['file_size_dimensions']+''')</div><a class="fileThumb"
-                                                href="'''+xch.config['site']['url']+board.url+'''/'''+get_file_name(thread.time, thread.file)+'''" target="_blank"><img
-                                                    src="'''+xch.config['site']['url']+board.url+'''/'''+get_file_name(thread.time, thread.file, thumbnail=1)+'''" alt="'''+get_file_info(get_file_name(thread.time, thread.file))['file_size_human']+'''" data-md5="'''+get_file_info(get_file_name(thread.time, thread.file))['file_md5']+'''"
+                                                href="'''+get_site_url()+board.url+'''/'''+get_file_name(thread.time, thread.file)+'''" target="_blank"><img
+                                                    src="'''+get_site_url()+board.url+'''/'''+get_file_name(thread.time, thread.file, thumbnail=1)+'''" alt="'''+get_file_info(get_file_name(thread.time, thread.file))['file_size_human']+'''" data-md5="'''+get_file_info(get_file_name(thread.time, thread.file))['file_md5']+'''"
                                                     style="height: auto; width: auto; max-height: 250px; max-width:250px;" loading="lazy">
                                                 <div data-tip="" data-tip-cb="mShowFull" class="mFileInfo mobile">'''+get_file_info(get_file_name(thread.time, thread.file))['file_size_human']+''' '''+get_file_info(get_file_name(thread.time, thread.file))['file_extension']+'''</div>
                                             </a>
@@ -81,13 +82,13 @@ def render_thread_list(thread_specific=0, thread_count=15, reply_count=4, page=1
                                                 class="subject">'''+thread.title+'''</span> <span class="nameBlock"><span
                                                     class="name">'''+thread.poster+'''</span></span> '''
                 if board.show_location:
-                    render += '''<img class="flag flag-us" src="'''+xch.config['site']['url']+'''_rsc/icon/flag/'''+thread.poster_location+'''.gif" style="margin: -2px 0;" alt="['''+thread.poster_location+''']" title="'''+thread.poster_location+'''" /> '''
+                    render += '''<img class="flag flag-us" src="'''+get_site_url()+'''_rsc/icon/flag/'''+thread.poster_location+'''.gif" style="margin: -2px 0;" alt="['''+thread.poster_location+''']" title="'''+thread.poster_location+'''" /> '''
                     
                 render += '''<span class="dateTime"
                                                 data-utc="'''+str(thread.time)+'''">'''+render_human_time(thread.time)+'''</span> <span class="postNum desktop"><a
-                                                    href="'''+xch.config['site']['url']+board.url+'''/thread/'''+str(thread.id)+'''#p'''+str(thread.id)+'''" title="Link to this post">No.</a><a
-                                                    href="'''+xch.config['site']['url']+board.url+'''/thread/'''+str(thread.id)+'''#q'''+str(thread.id)+'''" title="Reply to this post">'''+str(thread.id)+'''</a> '''+is_sticky+''' '''+is_closed+'''
-                                                &nbsp; <span>[<a href="'''+xch.config['site']['url']+board.url+'''/thread/'''+str(thread.id)+'''/'''+get_slug(thread.title)+'''"
+                                                    href="'''+get_site_url()+board.url+'''/thread/'''+str(thread.id)+'''#p'''+str(thread.id)+'''" title="Link to this post">No.</a><a
+                                                    href="'''+get_site_url()+board.url+'''/thread/'''+str(thread.id)+'''#q'''+str(thread.id)+'''" title="Reply to this post">'''+str(thread.id)+'''</a> '''+is_sticky+''' '''+is_closed+'''
+                                                &nbsp; <span>[<a href="'''+get_site_url()+board.url+'''/thread/'''+str(thread.id)+'''/'''+get_slug(thread.title)+'''"
                                                         class="replylink">Reply</a>]</span></span>
                                                         <div id="bl_'''+str(thread.id)+'''" class="backlink">'''+backlinks+'''</div>
                                                         </div>'''
@@ -95,7 +96,7 @@ def render_thread_list(thread_specific=0, thread_count=15, reply_count=4, page=1
                                         <blockquote class="postMessage" id="m'''+str(thread.id)+'''">'''+parse_message(thread.content)+'''</blockquote>
                                         '''+disclaimer+'''
                                     </div>
-                                    <div class="postLink mobile"><span class="info">4 Replies / 3 Images</span><a href="'''+xch.config['site']['url']+board.url+'''/thread/'''+str(thread.id)+'''"
+                                    <div class="postLink mobile"><span class="info">4 Replies / 3 Images</span><a href="'''+get_site_url()+board.url+'''/thread/'''+str(thread.id)+'''"
                                             class="button">View Thread</a></div>
                                 </div>'''
                 if not thread_specific:
@@ -106,31 +107,31 @@ def render_thread_list(thread_specific=0, thread_count=15, reply_count=4, page=1
                     backlinks = ""
                     for reply in replies_to_post(post.id, post.thread):
                         backlinks += '<span><a href="#p'+str(reply)+'" class="quotelink">&gt;&gt;'+str(reply)+'</a></span> '
-                #render += '''<span class="summary desktop">3 replies and 2 images omitted. <a href="'''+xch.config['site']['url']+board.url+'''/thread/'''+str(thread.id)+'''" class="replylink">Click here</a> to view.</span>'''
+                #render += '''<span class="summary desktop">3 replies and 2 images omitted. <a href="'''+get_site_url()+board.url+'''/thread/'''+str(thread.id)+'''" class="replylink">Click here</a> to view.</span>'''
                     render += '''<div class="postContainer replyContainer" id="pc'''+str(post.id)+'''">
                                     <div class="sideArrows" id="sa'''+str(post.id)+'''">&gt;&gt;</div>
                                     <div id="p'''+str(post.id)+'''" class="post reply">
                                         <div class="postInfoM mobile" id="pim'''+str(post.id)+'''"> <span class="nameBlock"><span class="name">'''+post.poster+'''</span> <br/></span><span class="dateTime postNum"
-                                                data-utc="'''+str(post.time)+'''">'''+render_human_time(post.time)+''' <a href="'''+xch.config['site']['url']+board.url+'''/thread/'''+str(thread.id)+'''#p'''+str(post.id)+'''"
-                                                    title="Link to this post">No.</a><a href="'''+xch.config['site']['url']+board.url+'''/thread/'''+str(thread.id)+'''#q'''+str(post.id)+'''"
+                                                data-utc="'''+str(post.time)+'''">'''+render_human_time(post.time)+''' <a href="'''+get_site_url()+board.url+'''/thread/'''+str(thread.id)+'''#p'''+str(post.id)+'''"
+                                                    title="Link to this post">No.</a><a href="'''+get_site_url()+board.url+'''/thread/'''+str(thread.id)+'''#q'''+str(post.id)+'''"
                                                     title="Reply to this post">'''+str(post.id)+'''</a></span></div>
                                         <div class="postInfo desktop" id="pi'''+str(post.id)+'''"><input type="checkbox" name="'''+str(post.id)+'''" value="delete"> <span
                                                 class="subject">'''+post.title+'''</span> <span
                                                 class="nameBlock"><span class="name">'''+post.poster+'''</span></span> '''
                     if board.show_location:
-                        render += '''<img class="flag flag-us" src="'''+xch.config['site']['url']+'''_rsc/icon/flag/'''+post.poster_location+'''.gif" style="margin: -2px 0;" alt="['''+post.poster_location+''']" title="'''+post.poster_location+'''" /> '''
+                        render += '''<img class="flag flag-us" src="'''+get_site_url()+'''_rsc/icon/flag/'''+post.poster_location+'''.gif" style="margin: -2px 0;" alt="['''+post.poster_location+''']" title="'''+post.poster_location+'''" /> '''
 
                     render += '''<span class="dateTime" data-utc="'''+str(post.time)+'''">'''+render_human_time(post.time)+'''</span> <span
-                                                class="postNum desktop"><a href="'''+xch.config['site']['url']+board.url+'''/thread/'''+str(thread.id)+'''#p'''+str(post.id)+'''" title="Link to this post">No.</a><a
-                                                    href="'''+xch.config['site']['url']+board.url+'''/thread/'''+str(thread.id)+'''#q'''+str(post.id)+'''" title="Reply to this post">'''+str(post.id)+'''</a></span>
+                                                class="postNum desktop"><a href="'''+get_site_url()+board.url+'''/thread/'''+str(thread.id)+'''#p'''+str(post.id)+'''" title="Link to this post">No.</a><a
+                                                    href="'''+get_site_url()+board.url+'''/thread/'''+str(thread.id)+'''#q'''+str(post.id)+'''" title="Reply to this post">'''+str(post.id)+'''</a></span>
                                                     <div id="bl_'''+str(post.id)+'''" class="backlink">'''+backlinks+'''</div>
                                                     </div>'''
                     if 'file_size_human' in get_file_info(get_file_name(post.time, post.file)):
                         render += '''<div class="file" id="f'''+str(post.id)+'''">
-                                                <div class="fileText" id="fT'''+str(post.id)+'''">File: <a href="'''+xch.config['site']['url']+board.url+'''/'''+get_file_name(post.time, post.file)+'''"
+                                                <div class="fileText" id="fT'''+str(post.id)+'''">File: <a href="'''+get_site_url()+board.url+'''/'''+get_file_name(post.time, post.file)+'''"
                                                         target="_blank">'''+post.file+'''</a> ('''+get_file_info(get_file_name(post.time, post.file))['file_size_human']+''', '''+get_file_info(get_file_name(post.time, post.file))['file_size_dimensions']+''')</div><a class="fileThumb"
-                                                    href="'''+xch.config['site']['url']+board.url+'''/'''+get_file_name(post.time, post.file)+'''" target="_blank"><img
-                                                        src="'''+xch.config['site']['url']+board.url+'''/'''+get_file_name(post.time, post.file, thumbnail=1)+'''" alt="'''+get_file_info(get_file_name(post.time, post.file))['file_size_human']+'''" data-md5="'''+get_file_info(get_file_name(post.time, post.file))['file_md5']+'''"
+                                                    href="'''+get_site_url()+board.url+'''/'''+get_file_name(post.time, post.file)+'''" target="_blank"><img
+                                                        src="'''+get_site_url()+board.url+'''/'''+get_file_name(post.time, post.file, thumbnail=1)+'''" alt="'''+get_file_info(get_file_name(post.time, post.file))['file_size_human']+'''" data-md5="'''+get_file_info(get_file_name(post.time, post.file))['file_md5']+'''"
                                                         style="height: auto; width: auto; max-height: 250px; max-width:250px;" loading="lazy">
                                                     <div data-tip="" data-tip-cb="mShowFull" class="mFileInfo mobile">'''+get_file_info(get_file_name(post.time, post.file))['file_size_human']+''' PNG</div>
                                                 </a>

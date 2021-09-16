@@ -11,8 +11,8 @@
 				<div id="form">
                     <h1>Create your board</h1>
                     <div class="subtitle">before someone else does</div>
-                    <p style="text-align:center">COUNT_NOTIMPLEMENTED boards have been abandoned by their owners and may be claimed. Please refer to the <a href="{{ config()['site']['url'] }}/claim">list of claimable boards</a>.</p>
-                    <form action="{{ config()['site']['url'] }}_fn/create_board" method="get">
+                    <p style="text-align:center">COUNT_NOTIMPLEMENTED boards have been abandoned by their owners and may be claimed. Please refer to the <a href="{{ get_site_url() }}/claim">list of claimable boards</a>.</p>
+                    <form action="{{ get_site_url() }}_fn/create_board" method="get">
                         <table class="modlog" style="width:auto">
                             <tbody>
                                 <tr>

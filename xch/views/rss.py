@@ -47,7 +47,7 @@ def board_xml_threads(board):
                     if thread:
                         activity_item += '''<item>
                                             <title>'''+thread.poster+''' created "'''+html_escape(thread.title)+'''" in '''+html_escape(board_info.title)+'''</title>
-                                            <link>'''+xch.config['site']['url']+str(board_info.url)+'''/thread/'''+str(thread.id)+'''#p'''+str(thread.id)+'''</link>
+                                            <link>'''+get_site_url()+str(board_info.url)+'''/thread/'''+str(thread.id)+'''#p'''+str(thread.id)+'''</link>
                                             <guid isPermalink="false">'''+str(thread.time)+'''</guid>
                                             <pubDate>'''+human_date(thread.time)+'''</pubDate>
                                         </item>'''
@@ -86,7 +86,7 @@ def board_xml_posts(board):
                         if thread:
                             activity_item += '''<item>
                                                 <title>'''+post.poster+''' replied to "'''+html_escape(thread.title)+'''" in '''+html_escape(board_info.title)+'''</title>
-                                                <link>'''+xch.config['site']['url']+str(board_info.url)+'''/thread/'''+str(thread.id)+'''#p'''+str(post.id)+'''</link>
+                                                <link>'''+get_site_url()+str(board_info.url)+'''/thread/'''+str(thread.id)+'''#p'''+str(post.id)+'''</link>
                                                 <guid isPermalink="false">'''+str(post.time)+'''</guid>
                                                 <pubDate>'''+human_date(post.time)+'''</pubDate>
                                             </item>'''

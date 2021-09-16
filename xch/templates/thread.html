@@ -2,15 +2,15 @@
 {% block body %}
     <hr class="abovePostForm">
     <div style='position:relative'></div>
-    <div class="navLinks mobile"><span class="mobileib button"><a href="{{ config()['site']['url'] }}{{ board['url'] }}/" accesskey="a">Return</a></span> <span
-            class="mobileib button"><a href="{{ config()['site']['url'] }}{{ board['url'] }}/catalog">Catalog</a></span> <span class="mobileib button"><a
+    <div class="navLinks mobile"><span class="mobileib button"><a href="{{ get_site_url() }}{{ board['url'] }}/" accesskey="a">Return</a></span> <span
+            class="mobileib button"><a href="{{ get_site_url() }}{{ board['url'] }}/catalog">Catalog</a></span> <span class="mobileib button"><a
                 href="#bottom">Bottom</a></span> <span class="mobileib button"><a href="#top_r"
                 id="refresh_top">Refresh</a></span></div>
     <hr class="mobile">
     {% if thread['is_closed'] %}
     <div class="closed">Thread closed.<br/>You may not reply at this time.</div>
     {% else %}
-    <form name="post" action="{{ config()['site']['url'] }}{{ board['url'] }}/_fn/create_post" method="post" enctype="multipart/form-data">
+    <form name="post" action="{{ get_site_url() }}{{ board['url'] }}/_fn/create_post" method="post" enctype="multipart/form-data">
         <input type="hidden" name="MAX_FILE_SIZE" value="{{ board['maxFilesize'] }}">
         <input type="hidden" name="mode" value="regist">
         <input id="postPassword" name="pwd" type="hidden">
@@ -53,8 +53,8 @@
             <tr class="rules">
                 <td colspan="2">
                     <ul class="rules">
-                        <li>Please read the <a href="{{ config()['site']['url'] }}index/rules">Rules</a> and <a
-                            href="{{ config()['site']['url'] }}index/faq">FAQ</a> before posting.</li>
+                        <li>Please read the <a href="{{ get_site_url() }}index/rules">Rules</a> and <a
+                            href="{{ get_site_url() }}index/faq">FAQ</a> before posting.</li>
                         <li>
                             Maximum file size is {{human_size(board['maxFilesize'])}}.
                             {% if board['maxFilesize'] != board['maxWebmFilesize'] %}
@@ -90,7 +90,7 @@
         <tfoot>
             <tr>
                 <td colspan="2">[<a data-utc="1598018313" id="toggleBlotter" href="#">Hide</a>]<span> [<a
-                            href="{{ config()['site']['url'] }}blotter" target="_blank">Show All</a>]</span></td>
+                            href="{{ get_site_url() }}blotter" target="_blank">Show All</a>]</span></td>
             </tr>
         </tfoot>
     </table> -->
@@ -102,24 +102,24 @@
         {{ config()['site']['announcement']|safe }}
     </div>
     <hr class="desktop" id="op">
-    <div class="navLinks desktop">[<a href="{{ config()['site']['url'] }}{{ board['url'] }}/" accesskey="a">Return</a>] [<a href="{{ config()['site']['url'] }}{{ board['url'] }}/catalog">Catalog</a>] [<a
+    <div class="navLinks desktop">[<a href="{{ get_site_url() }}{{ board['url'] }}/" accesskey="a">Return</a>] [<a href="{{ get_site_url() }}{{ board['url'] }}/catalog">Catalog</a>] [<a
             href="#bottom">Bottom</a>]</div>
     <hr>
-    <form name="delform" id="delform" action="{{ config()['site']['url'] }}{{ board['url'] }}/_fn/delete_post" method="get">
+    <form name="delform" id="delform" action="{{ get_site_url() }}{{ board['url'] }}/_fn/delete_post" method="get">
         <div class="board">
             {{ render_thread_list(thread_specific=thread['id'], thread_count=1, reply_count=512, board=board['url'])|safe }}
             <hr>
             <div class="navLinks navLinksBot desktop">
-            [<a href="{{ config()['site']['url'] }}{{ board['url'] }}" accesskey="a">Return</a>] [<a
-                    href="{{ config()['site']['url'] }}{{ board['url'] }}/catalog">Catalog</a>] [<a href="#top">Top</a>] <div class="thread-stats">{{ render_thread_stats(thread['id'])|safe }}</div> [<a href="" data-cmd="update">Update</a>]
+            [<a href="{{ get_site_url() }}{{ board['url'] }}" accesskey="a">Return</a>] [<a
+                    href="{{ get_site_url() }}{{ board['url'] }}/catalog">Catalog</a>] [<a href="#top">Top</a>] <div class="thread-stats">{{ render_thread_stats(thread['id'])|safe }}</div> [<a href="" data-cmd="update">Update</a>]
                 [<label><input type="checkbox" title="Fetch new replies automatically" data-cmd="auto">Auto</label>]
                 <span></span>
             </div>
             <hr class="desktop">
             <div class="mobile center"><a class="mobilePostFormToggle button" href="#">Post a Reply</a></div>
         </div>
-        <div class="navLinks mobile"><span class="mobileib button"><a href="{{ config()['site']['url'] }}{{ board['url'] }}/" accesskey="a">Return</a></span> <span
-                class="mobileib button"><a href="{{ config()['site']['url'] }}{{ board['url'] }}/catalog">Catalog</a></span> <span class="mobileib button"><a
+        <div class="navLinks mobile"><span class="mobileib button"><a href="{{ get_site_url() }}{{ board['url'] }}/" accesskey="a">Return</a></span> <span
+                class="mobileib button"><a href="{{ get_site_url() }}{{ board['url'] }}/catalog">Catalog</a></span> <span class="mobileib button"><a
                     href="#top">Top</a></span> <span class="mobileib button"><a href="#bottom_r"
                     id="refresh_bottom">Refresh</a></span></div>
         <hr class="mobile">

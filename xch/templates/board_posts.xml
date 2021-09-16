@@ -3,7 +3,7 @@
 	<channel>
 	<title>/{{ board['url'] }}/ - {{ board['title'] }}</title>
 	<description>/{{ board['url'] }}/</description>
-	<link>{{ config()['site']['url'] }}{{ board['url'] }}</link>
+	<link>{{ get_site_url() }}{{ board['url'] }}</link>
 	<guid isPermaLink="false">{{latest_post}}</guid>
 	<lastBuildDate>{{human_date(latest_post)}}</lastBuildDate>
 	<pubDate>{{human_date(latest_post)}}</pubDate>

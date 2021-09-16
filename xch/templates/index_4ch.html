@@ -14,7 +14,7 @@
 		<div id="doc">
 			<div id="hd">
 				<div id="logo-fp">
-					<a href="{{ config()['site']['url'] }}" title="Home"><img alt="{{ config()['site']['title']|safe }}"
+					<a href="{{ get_site_url() }}" title="Home"><img alt="{{ config()['site']['title']|safe }}"
 							src="{{ static_url('image/fp/logo-transparent.png') }}" width="300" height="120"></a>
 				</div>
 			</div>
@@ -36,7 +36,7 @@
 					<div class="box-inner">
 						<div class="boxbar">
 							<h2>Boards</h2>
-							<div id="create-btn"><a href="{{ config()['site']['url'] }}create" data-cmd="create">create</a></div>
+							<div id="create-btn"><a href="{{ get_site_url() }}create" data-cmd="create">create</a></div>
 							<div id="filter-btn" data-cmd="filter" onclick="alert('NOTIMPLEMENTED')">filter ▼</div>
 						</div>
 						<div class="boxcontent">

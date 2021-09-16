@@ -22,7 +22,6 @@ elif os.environ.get('XCH_DEMO'):
 else:
      config_path = "xch/config/config.json"
 
-
 try:
      with open(config_path) as config_file:
           config = json.load(config_file)

@@ -148,7 +148,7 @@
     <main id="boardlist">
         <section class="description box col col-12">
             <div class="col col-2">
-                <a href="{{ config()['site']['url'] }}" title="Home"><img alt="{{ config()['site']['title']|safe }}"
+                <a href="{{ get_site_url() }}" title="Home"><img alt="{{ config()['site']['title']|safe }}"
                 src="{{ static_url('image/fp/logo-transparent.png') }}" id="logo"></a>
             </div>
             <div class="col col-5">

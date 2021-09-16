@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="robots" content="noarchive">
         <meta name="description"
-            content="{{ config()['site']['url'] }}{{ board['url'] }}/ - {{ board['title'] }}{% if board['description'] %} &quot;{{ board['description'] }}&quot;{% endif %}">
+            content="{{ get_site_url() }}{{ board['url'] }}/ - {{ board['title'] }}{% if board['description'] %} &quot;{{ board['description'] }}&quot;{% endif %}">
         <meta name="keywords" content="{{ board['keywords'] }}">
         <meta name="referrer" content="origin">
         <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -13,8 +13,8 @@
 		<link rel="stylesheet" type="text/css" href="{{ static_url('css/board.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ static_url('css/mobile.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ static_url('css/base.css') }}">
-        <link rel="canonical" href="{{ config()['site']['url'] }}{{ board['url'] }}/">
-        <link rel="alternate" title="RSS feed" href="{{ config()['site']['url'] }}{{ board['url'] }}/index.rss" type="application/rss+xml">
+        <link rel="canonical" href="{{ get_site_url() }}{{ board['url'] }}/">
+        <link rel="alternate" title="RSS feed" href="{{ get_site_url() }}{{ board['url'] }}/index.rss" type="application/rss+xml">
         <title>{{ compose_title(page_title)|safe }}</title>
         <script type="text/javascript">
             var comlen = {{ board['comlen'] }};
@@ -53,7 +53,7 @@
         </span>
         <span id="navtopright">
             {% if board['public_bans'] %}
-            [<a href="{{ config()['site']['url'] }}{{ board['url'] }}/bans" title="Ban List">Ban List</a>]
+            [<a href="{{ get_site_url() }}{{ board['url'] }}/bans" title="Ban List">Ban List</a>]
             {% endif %}
             {% for item in config()['site']['board_nav_top_right'] %}
             [{{item|safe}}]
@@ -63,7 +63,7 @@
     <div id="boardNavMobile" class="mobile">
         <div class="boardSelect"> <strong>Board</strong> <select id="boardSelectMobile"></select> </div>
         <div class="pageJump"> <a href="#bottom">&#9660;</a> <a href="javascript:void(0);"
-                id="settingsWindowLinkMobile">Settings</a> <a href="{{ config()['site']['mobile_url']}}">Mobile</a> <a href="{{ config()['site']['url'] }}"
+                id="settingsWindowLinkMobile">Settings</a> <a href="{{ config()['site']['mobile_url']}}">Mobile</a> <a href="{{ get_site_url() }}"
                 target="_top">Home</a> </div>
     </div>
     <div class="boardBanner">
